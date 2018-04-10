@@ -31,7 +31,7 @@ export class OptionsPage {
 
   }
 
-    updateOptions(rep:JSON){
+    updateOptions(rep:any){
       this.data.notifications = +rep.notifications;
       this.data.notifications_email = +rep.notifications_email;
     }
