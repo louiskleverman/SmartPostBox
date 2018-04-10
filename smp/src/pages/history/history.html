@@ -1,0 +1,45 @@
+<ion-header class="new-backround">
+  <ion-navbar>
+    <ion-title>History de "Home box"</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center>
+
+    <select width="90%">
+      <option >Tout</option>
+      <option *ngFor="let key of data.keys" >{{key}}</option>
+    </select>
+
+    <ion-list>
+      <div  *ngFor="let key of data.keys" ion-item>
+
+        <h4 text-center>{{key}}</h4>
+
+        <ion-list>
+
+          <div *ngFor="let time of data.responses[key]" ion-item>
+            <ion-row justify-content-start>
+
+              <ion-col col-11>
+                <h5>{{time.date}}</h5>
+              </ion-col>
+
+              <ion-col col-1>
+                <ion-icon (click)=deleteHistory(time.id) ios="ios-close" md="md-close"></ion-icon>
+              </ion-col>
+
+            </ion-row>
+          </div>
+
+        </ion-list>
+
+      </div>
+
+    </ion-list>
+
+  </div>
+
+
+</ion-content>

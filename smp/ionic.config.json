@@ -1,0 +1,8 @@
+{
+  "name": "smp",
+  "app_id": "69c3e0bf",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

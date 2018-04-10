@@ -1,0 +1,33 @@
+<ion-header class="new-backround">
+  <ion-navbar>
+    <ion-title>Identification</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center>
+    <h2>Bienvenue sur SmartPostBox!</h2>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <br/>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button (click)="signIn()" block>Sign In</button>
+  </div>
+</div>
+
+  <p class="createAccount">Vous n'avez pas de compte ?<br/> <a (click)="signup()">créer un compte</a>.</p>
+
+
+</ion-content>

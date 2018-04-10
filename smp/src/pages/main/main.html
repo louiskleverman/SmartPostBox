@@ -1,0 +1,42 @@
+<ion-header class="new-backround">
+  <ion-navbar>
+    <ion-row justify-content-start>
+      <ion-title col-11>Vos mailbox</ion-title>
+
+      <ion-icon id="logout" (click)=disconnect() name="log-out"></ion-icon>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="add"><ion-icon (click)="addPostBox()" name="add-circle"></ion-icon></div>
+  <div class="options"><ion-icon (click)="options()" name="cog"></ion-icon></div>
+  <div text-center>
+    <h2>Vos mail box</h2>
+    <ion-list>
+
+      <div *ngFor="let item of data.response" ion-item>
+        <ion-row justify-content-start>
+
+          <ion-col col-9>
+            <h3>{{item.mail_box_name}}</h3>
+            <h4>Status : {{item.mail_box_status}}</h4>
+          </ion-col>
+
+          <ion-col col-2>
+              <ion-icon (click)="showHistory(item.id_mail_box)"  ios="ios-albums" md="md-albums"></ion-icon>
+          </ion-col>
+
+          <ion-col col-1>
+            <ion-icon (click)="deletePostBox(item.id_mail_box,data.id)" ios="ios-close" md="md-close"></ion-icon>
+          </ion-col>
+
+        </ion-row>
+      </div>
+
+    </ion-list>
+
+  </div>
+
+
+</ion-content>

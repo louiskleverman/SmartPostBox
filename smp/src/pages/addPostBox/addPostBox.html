@@ -1,0 +1,32 @@
+<ion-header class="new-backround">
+  <ion-navbar>
+    <ion-title>Ajouter Boite a lettre</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div text-center>
+    <h2>Ajouter boite à lettre</h2>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Identifiant</ion-label>
+      <ion-input type="number" [(ngModel)]="post_box_id"></ion-input>
+    </ion-item>
+    <br/>
+    <ion-item>
+      <ion-label>Nom</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button (click)="addPostBox()" block>Ajouter boite à lettre</button>
+  </div>
+</div>
+
+
+
+</ion-content>
