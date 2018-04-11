@@ -17,6 +17,7 @@ export class HistoryPage {
     this.http = http;
     this.navCtrl = navCtrl;
 
+
     var link2 = 'http://myartema.com/spb/clearNotifications.php';
     var myData2 = JSON.stringify({id : this.data.id,user:this.data.user});
 
@@ -40,6 +41,21 @@ export class HistoryPage {
       console.log(error);
     });
 
+  }
+
+
+  refresh(){
+    var link = 'http://myartema.com/spb/getHistory.php';
+    var myData = JSON.stringify({id : this.data.id});
+
+    this.http.post(link, myData)
+    .subscribe( data => {
+      this.data.responses = JSON.parse(data["_body"]);
+
+      this.data.keys = Object.keys(this.data.responses);
+    }, error => {
+      console.log(error);
+    });
   }
 
   deleteHistory(iddel:number){

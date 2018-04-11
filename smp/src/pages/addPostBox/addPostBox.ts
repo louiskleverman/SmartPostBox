@@ -41,7 +41,7 @@ export class AddPostBoxPage {
             //close page
             this.navCtrl.pop();
 
-            this.navCtrl.setRoot(MainPage,{id:this.data.id});
+            this.navCtrl.setRoot(MainPage,{id:this.data.id,refresh:true});
           });
 
           toast.present();

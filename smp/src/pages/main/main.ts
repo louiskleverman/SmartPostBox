@@ -14,10 +14,16 @@ import { OptionsPage } from '../options/options';
 export class MainPage {
   data:any = {};
   lapage = null;
+  refresh:any;
   constructor(public navCtrl: NavController ,public http: Http,public alertCtrl: AlertController,public navParams: NavParams) {
 
     this.data.id = this.navParams.get('id');
+    this.refresh = this.navParams.get('refresh');
     this.http = http;
+
+    if(this.refresh == null){
+      this.getStatusAlerts();
+    }
 
     var link = 'http://myartema.com/spb/getPostBoxes.php';
     var myData = JSON.stringify({id : this.data.id});
@@ -49,12 +55,41 @@ export class MainPage {
         {
           text: 'Oui',
           handler: () => {
+            this.refresh = null;
             this.navCtrl.setRoot(LoginPage);
           }
         }
       ]
     });
     alert.present();
+  }
+
+
+  getStatusAlerts(){
+    var link = 'http://myartema.com/spb/getStatusAlerts.php';
+    var myData = JSON.stringify({id : this.data.id});
+
+    this.http.post(link, myData)
+    .subscribe( data => {
+
+        var rep = JSON.parse(data["_body"]);
+        for(let box of rep){
+          let alert = this.alertCtrl.create({
+            title: 'ATTENTION',
+            message: 'La boîte : ' + box.mail_box_name + ' est ' + box.mail_box_status,
+            buttons: [
+              {text: 'Ok',role: 'cancel',
+                handler: () => {
+                }
+              }
+            ]
+          });
+          alert.present();
+      }
+
+    }, error => {
+      console.log(error);
+    });
   }
 
   showHistory(num:string){

@@ -13,6 +13,7 @@ export class SignupPage {
   data:any = {};
   username = '';
   password = '';
+  email = '';
 
   constructor(public navCtrl: NavController ,public http: Http,public toastCtrl: ToastController,public alertCtrl: AlertController,public navParams: NavParams) {
     this.http = http;
@@ -23,7 +24,7 @@ export class SignupPage {
 
   signup(){
     var link = 'http://myartema.com/spb/signup.php';
-    var myData = JSON.stringify({username : this.username,password : this.password});
+    var myData = JSON.stringify({email : this.email,username : this.username,password : this.password});
 
     this.http.post(link, myData)
     .subscribe( data => {

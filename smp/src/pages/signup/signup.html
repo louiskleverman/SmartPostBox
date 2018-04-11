@@ -11,10 +11,15 @@
   <ion-list>
 
     <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
       <ion-label>Username</ion-label>
       <ion-input type="text" [(ngModel)]="username"></ion-input>
     </ion-item>
-    <br/>
+
     <ion-item>
       <ion-label>Password</ion-label>
       <ion-input type="password" [(ngModel)]="password"></ion-input>
