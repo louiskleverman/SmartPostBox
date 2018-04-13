@@ -1,8 +1,9 @@
 <ion-header class="new-backround">
   <ion-navbar>
     <ion-row justify-content-start>
-      <ion-title col-11>Vos mailbox</ion-title>
+      <ion-title col-9>Vos mailbox</ion-title>
 
+      <ion-icon id="refresh" (click)=refreshBox() name="refresh"></ion-icon>
       <ion-icon id="logout" (click)=disconnect() name="log-out"></ion-icon>
     </ion-row>
   </ion-navbar>
@@ -19,12 +20,12 @@
         <ion-row justify-content-start>
 
           <ion-col col-9>
-            <h3>{{item.mail_box_name}}</h3>
+            <h3>{{item.mail_box_name}} {{item.notifications}}</h3>
             <h4>Status : {{item.mail_box_status}}</h4>
           </ion-col>
 
           <ion-col col-2>
-              <ion-icon (click)="showHistory(item.id_mail_box)"  ios="ios-albums" md="md-albums"></ion-icon>
+              <ion-icon (click)="showHistory(item.id_mail_box,item.mail_box_name)"  ios="ios-albums" md="md-albums"></ion-icon>
           </ion-col>
 
           <ion-col col-1>

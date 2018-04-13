@@ -10,12 +10,14 @@ import { AlertController } from 'ionic-angular';
 })
 export class HistoryPage {
   data:any = {};
+  mailBoxName:any;
 
   constructor(public navCtrl: NavController ,public http: Http,public toastCtrl: ToastController,public alertCtrl: AlertController,public navParams: NavParams) {
     this.data.id = this.navParams.get('id');
     this.data.user = this.navParams.get('user');
     this.http = http;
     this.navCtrl = navCtrl;
+    this.mailBoxName = this.navParams.get('mailBoxName');
 
 
     var link2 = 'http://myartema.com/spb/clearNotifications.php';
@@ -41,6 +43,7 @@ export class HistoryPage {
       console.log(error);
     });
 
+    this.data.user = this.navParams.get('parent').refreshBox();
   }
 
 
@@ -56,6 +59,17 @@ export class HistoryPage {
     }, error => {
       console.log(error);
     });
+
+    var link3 = 'http://myartema.com/spb/clearNotifications.php';
+    var myData3 = JSON.stringify({id : this.data.id,user:this.data.user});
+
+    this.http.post(link3, myData3)
+    .subscribe( data => {
+
+    }, error => {
+      console.log(error);
+    });
+
   }
 
   deleteHistory(iddel:number){

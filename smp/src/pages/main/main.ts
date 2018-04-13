@@ -40,6 +40,20 @@ export class MainPage {
 
   }
 
+  refreshBox(){
+    var link = 'http://myartema.com/spb/getPostBoxes.php';
+    var myData = JSON.stringify({id : this.data.id});
+
+    this.http.post(link, myData)
+    .subscribe( data => {
+
+      this.data.response = JSON.parse(data["_body"]);
+
+    }, error => {
+      console.log(error);
+    });
+  }
+
   disconnect(){
     let alert = this.alertCtrl.create({
       title: 'Deconnecter',
@@ -92,9 +106,9 @@ export class MainPage {
     });
   }
 
-  showHistory(num:string){
+  showHistory(num:string,mailBoxName:any){
     //alert("changing to " + num );
-    this.navCtrl.push(HistoryPage,{id:num,user:this.data.id});
+    this.navCtrl.push(HistoryPage,{id:num,user:this.data.id,parent:this,mailBoxName:mailBoxName});
   }
 
   addPostBox(){
